@@ -49,7 +49,7 @@
         cLink.style.color   = '#fff';
         cLink.addEventListener('click', function () {
             container.style.display = 'none';
-            Cookies.create('notification', 'true', 30); // TODO: Change 30 to change the cookies lifetime. (days)
+            Cookies.create('notification', 'true', 30); // Note: Change 30 to change the cookies lifetime. (days)
         });
 
         close.appendChild(cLink);
