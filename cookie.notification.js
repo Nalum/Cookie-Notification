@@ -34,8 +34,17 @@
             this.create(name, '', -1);
             this[name] = undefined;
         }
-    }, body, container, message, close, cLink, mLink;
+    }, body, container, message, close, cLink, mLink,
+        lifetime = 30, url = 'https://github.com/Nalum/Cookie-Notification';
     Cookies.init();
+    
+    if (typeof cookieLifetime == "number") {
+        lifetime = cookieLifetime;
+    }
+    
+    if (typeof cookieUrl == "string") {
+        url = cookieUrl;
+    }
 
     if ("undefined" === typeof Cookies.notification) {
         body = document.getElementsByTagName('body')[0];
@@ -46,29 +55,33 @@
         cLink = document.createElement('a');
 
         cLink.textContent   = 'close';
-        cLink.style.color   = '#fff';
+        cLink.style.color   = '#ccc';
         cLink.addEventListener('click', function () {
             container.style.display = 'none';
-            Cookies.create('notification', 'true', 30); // Note: Change 30 to change the cookies lifetime. (days)
+            Cookies.create('notification', 'true', lifetime);
         });
 
         close.appendChild(cLink);
         close.style.float       = 'right';
         close.style.width       = '150px';
         close.style.textAlign   = 'center';
+        close.style.margin      = '2px';
         close.style.marginRight = '15px';
         close.style.cursor      = 'pointer';
 
-        mLink.textContent = 'click here';
         mLink.attributes.setNamedItem(document.createAttribute('href'));
-        mLink.attributes.href.value = ''; // TODO: Insert URL here.
-        mLink.style.color           = '#fff';
+        mLink.attributes.setNamedItem(document.createAttribute('target'));
+        mLink.textContent               = 'click here';
+        mLink.attributes.href.value     = url;
+        mLink.attributes.target.value   = "_blank"
+        mLink.style.color               = '#ccc';
 
         message.innerHTML = 'This website uses cookies. For more information please ';
         message.appendChild(mLink);
         message.style.float         = 'left';
         message.style.width         = '500px';
         message.style.textAlign     = 'center';
+        message.style.margin        = '2px';
         message.style.marginLeft    = '15px';
         message.style.color         = '#fff';
 
@@ -80,6 +93,7 @@
         container.style.position        = 'fixed';
         container.style.left            = '0';
         container.style.top             = '0';
+        container.style.zIndex          = '999999';
         container.appendChild(close);
         container.appendChild(message);
 
