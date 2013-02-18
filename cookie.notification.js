@@ -1,9 +1,13 @@
 /**
  * This file will add a notification to the website about cookies, as required by EU law.
  *
- * Just include this file in your html.
+ * Include the below in your html.
  *
- * <script type="text/css" language="javascript" src="/path/to/cookie.notification.js"></script>
+ * <script type="text/javascript" language="javascript">
+ *     var cookieLifetime = 365, // lifetime in days.
+ *         cookieUrl = 'path/to/cookie-policy.pdf';
+ * </script>
+ * <script type="text/javascript" language="javascript" src="/path/to/cookie.notification.js"></script>
  */
 
 (function () {
