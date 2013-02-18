@@ -3,11 +3,11 @@
  *
  * Include the below in your html.
  *
- * <script type="text/javascript" language="javascript">
+ * <script type="text/javascript">
  *     var cookieLifetime = 365, // lifetime in days.
  *         cookieUrl = 'path/to/cookie-policy.pdf';
  * </script>
- * <script type="text/javascript" language="javascript" src="/path/to/cookie.notification.js"></script>
+ * <script type="text/javascript" src="/path/to/cookie.notification.js"></script>
  */
 
 (function () {
